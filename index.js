@@ -27,7 +27,12 @@ app.route("/ask").post(async (req, res) => {
     console.log(err);
     res.status(500).send(err);
   });
-  res.status(200).send(result.chatOutputText());
+  const chatOutputText = result?.chatOutputText();
+  const response = {
+    question: question,
+    response: chatOutputText,
+  };
+  res.status(200).send(response);
 });
 
 app.listen(port, () => {
