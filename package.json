@@ -20,7 +20,12 @@
   },
   "homepage": "https://github.com/spars57/aibpa-langflow#readme",
   "dependencies": {
+    "@datastax/langflow-client": "^0.2.1",
     "express": "^5.1.0",
     "nodemon": "^3.1.9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "tsx": "^4.19.4"
   }
 }

@@ -1,38 +1,39 @@
 import express from "express";
+
 const app = express();
 const port = process.env.PORT || 8081;
-
-const url = "http://localhost:4891/v1/chat/completions";
 
 app.use(express.json());
 
 app.route("/ask").post(async (req, res) => {
-  console.log(req);
   const question = req?.body?.question;
-  console.log("Sending question...", question);
   if (!question) {
     res.status(400).send("No question provided");
     return;
   }
-  const data = {
-    model: "Phi-3 Mini Instruct",
-    messages: [{ role: "user", content: question }],
-    max_tokens: 1000,
-    temperature: 0.5,
+
+  const payload = {
+    input_value: question,
+    output_type: "chat",
+    input_type: "chat",
+    session_id: "user_1",
   };
-  const response = await fetch(url, {
+
+  const options = {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  }).catch((err) => {
-    res.status(500).send(err);
-  });
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.LANGFLOW_API_KEY}`,
+    },
+    body: JSON.stringify(payload),
+  };
 
-  const json = await response.json();
-  console.log(JSON.stringify(json));
+  const url = `https://api.langflow.astra.datastax.com/lf/${process.env.LANGFLOW_ID}/api/v1/run/${process.env.LANGFLOW_FLOW_ID}`;
 
-  const message = json.choices[0].message.content.split("</think>")?.[1];
+  const result = await fetch(url, options);
 
+  const data = await result.json();
+  const message = data.outputs[0].outputs[0].results.message.text;
   res.status(200).send({ response: message });
 });
 
