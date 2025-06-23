@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon --env-file=.env index.js"
+    "start": "npx nodemon --env-file=.env index.js",
+    "docker:build": "docker build -t brumoisao/aibpa-langflow .",
+    "docker:push": "docker push brumoisao/aibpa-langflow"
   },
   "repository": {
     "type": "git",
