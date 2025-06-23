@@ -28,7 +28,7 @@ app.route("/ask").post(async (req, res) => {
     body: JSON.stringify(payload),
   };
 
-  const url = `https://api.langflow.astra.datastax.com/lf/${process.env.LANGFLOW_ID}/api/v1/run/${process.env.LANGFLOW_FLOW_ID}`;
+  const url = `http://localhost:7868/api/v1/run/${process.env.LANGFLOW_FLOW_ID}`;
 
   const result = await fetch(url, options);
 
