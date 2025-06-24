@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["python", "app.py"]
+CMD ["npm", "run", "start"]
