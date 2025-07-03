@@ -27,11 +27,13 @@ app.route("/ask").post(async (req, res) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer AstraCS:eePdcYapdohYIWYhlbWeKKlz:25d990b940ff69e3334ab943b94f5a321e42a4aa6f2accab991f5601f8202d9a`,
+      Authorization: `Bearer ${process.env.LANGFLOW_KEY}`,
     },
     body: JSON.stringify(payload),
   };
 
+
+  const url = `'https://api.langflow.astra.datastax.com/lf/678ca4a1-f19f-4491-afda-ba57b748719d/api/v1/run/b8290378-1f11-4f4e-adc6-09485c3832a1'`;
 
   const url = `'https://api.langflow.astra.datastax.com/lf/678ca4a1-f19f-4491-afda-ba57b748719d/api/v1/run/b8290378-1f11-4f4e-adc6-09485c3832a1'`;
 
@@ -50,6 +52,9 @@ app.route("/ask").post(async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Langflow server is running on port ${port}`);
+  setInterval(() => {
+    console.log(`Langflow server is running on port ${port}`);
+  }, 5000);
   setInterval(() => {
     console.log(`Langflow server is running on port ${port}`);
   }, 5000);
