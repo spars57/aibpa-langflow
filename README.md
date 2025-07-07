@@ -1,10 +1,22 @@
-# aibpa-langflow
+# Micro-serviço de Langflow para o AIBPA
 
-Microservice designed for providing a proxy between aibpa-service and Lanflow API
+Este projeto foi construido com Express e Javascript. É executado em NodeJS.
 
-This microservice requires the following environment variables:
+## Execução
 
-LANGFLOW_API_KEY -- stores the API Key for Langflow
-LANGFLOW_ID -- stores the Langflow ID
-FLOW_ID -- indicates which flow from Langflow we will use
-PORT -- were the application runs.
+Execute o comando "npm install" para instalar todas as depêndencias.
+
+Inicialize a aplicação através do comando "npm start".
+
+## Importante
+
+Todos os direitos reservados à Universidade Autónoma de Lisboa.
+
+Este projeto é de teor académico, qualquer cópia não autorizada está sujeita a plágios.
+
+Feito por:
+
+- Alexandre Tusto
+- Bruno Moisão
+- João Gardete
+- Ivalécia Cruz
